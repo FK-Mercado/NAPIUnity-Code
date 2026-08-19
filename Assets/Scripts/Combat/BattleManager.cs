@@ -27,8 +27,17 @@ namespace NAPI.Combat
 
         private TurnManager turnManager;
 
+        /// <summary>
+        /// Instancia única de CombatEventBus para esta batalla. No es
+        /// Singleton: se crea de nuevo cada vez que este BattleManager
+        /// arranca una batalla.
+        /// </summary>
+        public CombatEventBus EventBus { get; private set; }
+
         private void Start()
         {
+            EventBus = new CombatEventBus();
+
             turnManager = GetComponent<TurnManager>();
 
             CreatePlayerTeam();
@@ -67,6 +76,8 @@ namespace NAPI.Combat
                     progression
                 );
 
+            player.SetEventBus(EventBus);
+
             LogResultingStats(playerData.displayName, progression, player);
 
             playerTeam.Add(player);
@@ -95,6 +106,9 @@ namespace NAPI.Combat
                         enemyData,
                         false
                     );
+
+                enemy.SetEventBus(EventBus);
+
                 enemyTeam.Add(enemy);
             }
         }

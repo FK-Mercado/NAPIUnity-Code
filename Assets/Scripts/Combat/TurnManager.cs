@@ -83,6 +83,8 @@ namespace NAPI.Combat
             Combatant current = GetNextCombatant();
             if (current == null) return;
 
+            battleManager.EventBus?.Publish(new TurnStartEvent(current));
+
             current.ProcessTurnStartEffects();
 
             // Parálisis / interrupción: si algún efecto dice que este
@@ -107,7 +109,7 @@ namespace NAPI.Combat
             Combatant target = battleManager.GetFirstAliveEnemy();
             if (target == null) return;
 
-            SkillExecutor.Execute(attacker, target, attacker.Data.basicAttack);
+            SkillExecutor.Execute(attacker, target, attacker.Data.basicAttack, battleManager.EventBus);
             EndTurn(attacker);
         }
 
@@ -116,13 +118,15 @@ namespace NAPI.Combat
             Combatant target = battleManager.GetFirstAlivePlayer();
             if (target == null) return;
 
-            SkillExecutor.Execute(attacker, target, attacker.Data.basicAttack);
+            SkillExecutor.Execute(attacker, target, attacker.Data.basicAttack, battleManager.EventBus);
             EndTurn(attacker);
         }
 
         private void EndTurn(Combatant combatant)
         {
             combatant.ProcessTurnEndEffects();
+
+            battleManager.EventBus?.Publish(new TurnEndEvent(combatant));
 
             if (battleManager.CheckBattleEnd())
                 return;

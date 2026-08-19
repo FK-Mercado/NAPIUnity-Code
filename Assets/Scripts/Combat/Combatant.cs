@@ -11,6 +11,15 @@ namespace NAPI.Combat
         public CharacterProgression Progression { get; private set; }
         public bool IsPlayerControlled { get; private set; }
 
+        // ---- CombatEventBus de la batalla ----
+        // Referencia a la MISMA instancia que crea BattleManager por
+        // batalla (Etapa 4). Combatant no crea ni posee ningún bus:
+        // solo la recibe. Puede quedar null (ej. tests unitarios,
+        // Combatant creado fuera de una batalla real); en ese caso no
+        // se publica nada, sin excepción.
+        private CombatEventBus eventBus;
+        public void SetEventBus(CombatEventBus bus) => eventBus = bus;
+
         public int MaxHP { get; private set; }
         public int MaxEnergy { get; private set; }
 
@@ -34,7 +43,23 @@ namespace NAPI.Combat
 
         public int CurrentHP { get; private set; }
         public int CurrentEnergy { get; private set; }
+
+        // ---- CAR (legado) ----
+        // API antigua todavía en uso interno (TakeDamage/CanUseSkill).
+        // Contiene reglas de Ultimate (100 fijo, +10 por golpe recibido,
+        // SkillType.Definitivo como condición) que la arquitectura
+        // aprobada en FASE 0.5 va a mover a UltimateRuntime/
+        // UltimateChargeSystem en etapas posteriores. Se conserva sin
+        // cambios de comportamiento hasta esa migración (Etapa 5+/7).
         public int UltimateCharge { get; private set; }
+
+        // ---- CAR (estado runtime nuevo) ----
+        // Estado runtime puro de CAR, sin ninguna regla de Ultimate
+        // (sin máximo, sin generación automática, sin condición de
+        // lanzamiento). Todavía no está conectado a nada: lo usarán
+        // UltimateRuntime/UltimateChargeSystem en etapas posteriores.
+        // Coexiste con UltimateCharge (arriba) durante la migración.
+        public int CurrentCharge { get; private set; }
 
         public int BreakGauge { get; private set; }
         public int MaxBreakGauge { get; private set; } = 100;
@@ -90,6 +115,7 @@ namespace NAPI.Combat
             CurrentHP = MaxHP;
             CurrentEnergy = MaxEnergy / 2;
             UltimateCharge = 0;
+            CurrentCharge = 0;
             attackModifier = 0;
             defenseModifier = 0;
             speedModifier = 0;
@@ -140,13 +166,25 @@ namespace NAPI.Combat
 
         public void TakeDamage(int amount)
         {
+            bool wasAlive = IsAlive;
+
             CurrentHP = Mathf.Max(0, CurrentHP - amount);
             GainUltimateCharge(10);
+
+            if (wasAlive && !IsAlive)
+                eventBus?.Publish(new EnemyDefeatedEvent(this));
         }
 
         public void Heal(int amount)
         {
+            int previousHP = CurrentHP;
+
             CurrentHP = Mathf.Min(MaxHP, CurrentHP + amount);
+
+            int actualHealing = CurrentHP - previousHP;
+
+            if (actualHealing > 0)
+                eventBus?.Publish(new HealingEvent(this, this, actualHealing));
         }
 
         public bool CanUseSkill(SkillData skill)
@@ -175,6 +213,21 @@ namespace NAPI.Combat
         public void ResetUltimateChargeAfterUse()
         {
             UltimateCharge = 0;
+        }
+
+        // ---- CAR (estado runtime nuevo) ----
+        // Operaciones básicas sobre CurrentCharge. Deliberadamente NO
+        // tienen máximo ni ninguna otra regla: el máximo y cuándo se
+        // puede lanzar la Ultimate los define UltimateData/UltimateRuntime
+        // en una etapa posterior, no Combatant.
+        public void AddCharge(int amount)
+        {
+            CurrentCharge += amount;
+        }
+
+        public void SpendCharge(int amount)
+        {
+            CurrentCharge = Mathf.Max(0, CurrentCharge - amount);
         }
 
         public void ApplyGuard()
