@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55f8c5d7c94ffc4b9b3fe21ad8c8cc2, type: 3}
+  m_Name: Overload_Markus(OG)
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.OverloadBuffData
+  effectName: Overload
+  description: "A cambio de una mejora en todas las estadisticas con la sobre carga
+    de la armadura, Markus consume el doble de energ\xEDa, y provoca da\xF1os internos
+    no permanentes a la armadura, lo cual provoca que tras el efecto reciba por 3
+    turnos una reducci\xF3n en todas las estadisticas"
+  icon: {fileID: 0}
+  duration: 4
+  enabledStats: -1
+  fatigueDuration: 3
+  attackBoostPercentage: 0.5
+  attackFatiguePercentage: 0.3
+  defenseBoostPercentage: 0.40101823
+  defenseFatiguePercentage: 0.6
+  speedBoostPercentage: 0.8
+  speedFatiguePercentage: 0.5
+  maxHPBoostPercentage: 0.2
+  maxHPFatiguePercentage: 0.4

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5961b183a762ccd4fab6a74bc675a0b2, type: 3}
+  m_Name: jack
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.CharacterData
+  id: 1
+  displayName: jack
+  icon: {fileID: 0}
+  maxHP: 2000
+  maxEnergy: 100
+  attack: 10
+  defense: 10
+  speed: 60
+  affinity: 0
+  weakness: 0
+  basicAttack: {fileID: 11400000, guid: 68287cc2694374e4c96163f5196df75c, type: 2}
+  skills: []
+  ultimate: {fileID: 0}
+  rarity: 2
+  hpGrowthPerLevel: 8
+  energyGrowthPerLevel: 2
+  attackGrowthPerLevel: 2
+  defenseGrowthPerLevel: 1.5
+  speedGrowthPerLevel: 0.5
+  startingLevel: 1
+  characterPrefab: {fileID: 0}
+  canExtendGuardToTeam: 0

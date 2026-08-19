@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ccc94c8a82c1d40bbd6bc3fdac4b4b, type: 3}
+  m_Name: Skill_Markus(OG)_2
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.SkillData
+  id: 
+  skillName: Asault (gdb --purge [target])
+  description: 
+  skillType: 1
+  element: 0
+  targetType: 1
+  attackRange: 0
+  energyCost: 30
+  minDamagePercentage: 0.5
+  maxDamagePercentage: 1
+  numberOfHits: 4
+  turnCostMultiplier: 2.4
+  damagePercentagePerLevel: 0.05
+  maxSkillLevel: 11
+  currencyCostPerLevel: 100
+  levelUpResource: {fileID: 0}
+  resourceCostPerLevel: 1
+  requiresUltimateCharge: 0
+  appliedStatusEffects:
+  - {fileID: 11400000, guid: 96fb99ecfb9ee52408232f4c87d1d259, type: 2}
+  selfAppliedStatusEffects: []

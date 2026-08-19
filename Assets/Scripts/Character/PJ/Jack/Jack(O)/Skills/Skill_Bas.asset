@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ccc94c8a82c1d40bbd6bc3fdac4b4b, type: 3}
+  m_Name: Skill_Bas
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.SkillData
+  id: 1
+  skillName: Golpe Oscuro
+  description: golpea XD
+  skillType: 0
+  element: 6
+  targetType: 0
+  attackRange: 0
+  energyCost: 0
+  minDamage: 8
+  maxDamage: 12
+  numberOfHits: 2
+  turnCostMultiplier: 1
+  requiresUltimateCharge: 0
+  appliedStatusEffects:
+  - {fileID: 11400000, guid: 96fb99ecfb9ee52408232f4c87d1d259, type: 2}
+  - {fileID: 11400000, guid: b33ec10bc5f776347bb98d30e1b0b011, type: 2}
+  selfAppliedStatusEffects:
+  - {fileID: 11400000, guid: 9b5fd90f1eaddad43bedf9689e21475f, type: 2}
+  - {fileID: 11400000, guid: d6fa9b5895fa5604e92b8f5392f954fc, type: 2}

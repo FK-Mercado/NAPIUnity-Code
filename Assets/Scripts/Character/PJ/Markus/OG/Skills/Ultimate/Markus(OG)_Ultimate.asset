@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ccc94c8a82c1d40bbd6bc3fdac4b4b, type: 3}
+  m_Name: Markus(OG)_Ultimate
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.SkillData
+  id: 
+  skillName: ptrace_kill(target.pid)
+  description: 
+  skillType: 3
+  element: 3
+  targetType: 1
+  attackRange: 1
+  energyCost: 300
+  minDamagePercentage: 1
+  maxDamagePercentage: 1.5
+  numberOfHits: 5
+  turnCostMultiplier: 2.2
+  damagePercentagePerLevel: 0.1
+  maxSkillLevel: 11
+  currencyCostPerLevel: 150
+  levelUpResource: {fileID: 0}
+  resourceCostPerLevel: 1
+  requiresUltimateCharge: 1
+  appliedStatusEffects:
+  - {fileID: 11400000, guid: e7859e08083d2d444b2fee8dfdd3b9ee, type: 2}
+  - {fileID: 11400000, guid: f4dff11ff5cd03541a57be0a6a803463, type: 2}
+  - {fileID: 11400000, guid: 65879ba1528b6924e82fe680f53ba4de, type: 2}
+  selfAppliedStatusEffects:
+  - {fileID: 11400000, guid: 9dfdfd8c322622949ad09018e7142b5f, type: 2}
+  - {fileID: 11400000, guid: b303d57a91f436f42a3f09cde304f9a3, type: 2}
+  - {fileID: 11400000, guid: 97ddd53745dd38e498bff2903794e790, type: 2}

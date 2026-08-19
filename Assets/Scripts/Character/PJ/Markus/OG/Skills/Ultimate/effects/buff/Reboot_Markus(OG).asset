@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8496b81cc748641afa1931fe4268da, type: 3}
+  m_Name: Reboot_Markus(OG)
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.PurgeAllBuffData
+  effectName: systemctl isolate reboot.target
+  description: "Fuerza un reinicio inmediato del sistema. Lo cual elimina de golpe
+    todo el c\xF3digo corrupto (estados alterados)"
+  icon: {fileID: 0}
+  duration: 1

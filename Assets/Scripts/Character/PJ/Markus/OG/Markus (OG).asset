@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5961b183a762ccd4fab6a74bc675a0b2, type: 3}
+  m_Name: Markus (OG)
+  m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.CharacterData
+  id: 2
+  displayName: Markus
+  icon: {fileID: 0}
+  maxHP: 2000
+  maxEnergy: 500
+  attack: 40
+  defense: 50
+  speed: 60
+  affinity: 3
+  weakness: 6
+  basicAttack: {fileID: 11400000, guid: 65d69471d4f13964096c9a3cf1744df2, type: 2}
+  skills:
+  - {fileID: 11400000, guid: 50ceee7b4d5545c46901bb996a407cea, type: 2}
+  - {fileID: 11400000, guid: 0e1f92054493ba24e875e97b0c274717, type: 2}
+  ultimate: {fileID: 11400000, guid: f55c58367ed688b4da5e7e9b5c4c037e, type: 2}
+  rarity: 2
+  hpGrowthPerLevel: 80
+  energyGrowthPerLevel: 1.01
+  attackGrowthPerLevel: 2.02
+  defenseGrowthPerLevel: 1.5
+  speedGrowthPerLevel: 0.5
+  startingLevel: 1
+  characterPrefab: {fileID: 0}
+  canExtendGuardToTeam: 0
