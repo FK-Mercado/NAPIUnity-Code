@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NAPI.Data;
 
 namespace NAPI.Combat
 {
@@ -19,6 +20,27 @@ namespace NAPI.Combat
         private void Awake()
         {
             battleManager = GetComponent<BattleManager>();
+        }
+
+        private void Start()
+        {
+            if (battleManager == null)
+            {
+                Debug.LogError("TurnManager: BattleManager no encontrado.");
+                return;
+            }
+
+            if (battleManager.EventBus == null)
+            {
+                Debug.LogError("TurnManager: EventBus es NULL.");
+                return;
+            }
+
+            battleManager.EventBus.Subscribe<PlayerSkillSelectedEvent>(
+                OnPlayerSkillSelected
+            );
+
+            Debug.Log("TurnManager: Suscrito a PlayerSkillSelectedEvent.");
         }
 
         public void Initialize(List<Combatant> players, List<Combatant> enemies)
@@ -99,9 +121,22 @@ namespace NAPI.Combat
             Debug.Log($"Turno de {current.Data.name}");
 
             if (current.IsPlayerControlled)
-                ExecutePlayerTurn(current);
+                BeginPlayerTurn(current);
             else
                 ExecuteEnemyTurn(current);
+        }
+
+        private void BeginPlayerTurn(Combatant combatant)
+        {
+            Debug.Log("=== BEGIN PLAYER TURN ===");
+
+            Debug.Log($"Turno del jugador: {combatant.Data.displayName}");
+
+            Debug.Log("Esperando acción del jugador...");
+
+            battleManager.EventBus?.Publish(
+                new PlayerActionRequestedEvent(combatant)
+    );
         }
 
         private void ExecutePlayerTurn(Combatant attacker)
@@ -136,6 +171,66 @@ namespace NAPI.Combat
 
             PrintNext10Turns();
             StartNextTurn();
+        }
+
+        private void OnPlayerSkillSelected(PlayerSkillSelectedEvent eventData)
+        {
+            if (eventData == null)
+                return;
+
+            Combatant attacker = eventData.Combatant;
+            SkillData skill = eventData.Skill;
+
+            if (attacker == null)
+            {
+                Debug.LogError(
+                    "[TURN] No hay combatant para ejecutar la habilidad."
+                );
+
+                return;
+            }
+
+            if (skill == null)
+            {
+                Debug.LogError(
+                    "[TURN] La habilidad seleccionada es NULL."
+                );
+
+                return;
+            }
+
+            Debug.Log(
+                $"[TURN] Ejecutando {skill.skillName} con {attacker.Data.displayName}"
+            );
+
+            Combatant target = battleManager.GetFirstAliveEnemy();
+
+            if (target == null)
+            {
+                Debug.LogWarning(
+                    "[TURN] No hay enemigos vivos para atacar."
+                );
+
+                return;
+            }
+
+            SkillExecutor.Execute(
+                attacker,
+                target,
+                skill,
+                battleManager.EventBus
+            );
+
+            EndTurn(attacker);
+        }
+        private void OnDestroy()
+        {
+            if (battleManager == null || battleManager.EventBus == null)
+                return;
+
+            battleManager.EventBus.Unsubscribe<PlayerSkillSelectedEvent>(
+                OnPlayerSkillSelected
+            );
         }
     }
 }

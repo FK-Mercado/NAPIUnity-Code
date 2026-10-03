@@ -2,26 +2,23 @@ using UnityEngine;
 
 namespace NAPI.Data
 {
-    /// <summary>
-    /// Base compartida por CharacterData y EnemyData.
-    /// Contiene únicamente lo que el sistema de combate (Combatant,
-    /// TurnManager, DamageCalculator) necesita leer sin importarle
-    /// si el combatiente es un PJ o un enemigo.
-    /// </summary>
     public abstract class CombatantDataBase : ScriptableObject
     {
+        //-- Identidad, visual y descripción del combatiente
         [Header("Identidad")]
         public string id;
         public string displayName;
         public Sprite icon;
 
-        [Header("Stats base (punto 7 del GDD: HP, EN, CAR)")]
+        //-- Stats base
+        [Header("Stats base (max; HP, EN, CAR); def, ATK, SPD")]
         public int maxHP = 100;
         public int maxEnergy = 100;
         public int attack = 10;
         public int defense = 10;
         public int speed = 10;
 
+        //-- Afinidad elemental, habilidades y progresión
         [Header("Afinidad elemental")]
         public ElementType affinity;
         [Tooltip("Elemento al que este combatiente es débil (activa Break, punto 3 del GDD)")]

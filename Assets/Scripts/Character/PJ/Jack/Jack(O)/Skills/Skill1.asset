@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4ccc94c8a82c1d40bbd6bc3fdac4b4b, type: 3}
-  m_Name: Skill_Markus(OG)_1
+  m_Name: Skill1
   m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.SkillData
-  id: 1
-  skillName: Corte
+  id: 
+  skillName: 
   description: 
+  icon: {fileID: 0}
   skillType: 0
-  element: 3
+  element: 0
   targetType: 0
   attackRange: 0
   energyCost: 0
   minDamagePercentage: 1
-  maxDamagePercentage: 1.5
+  maxDamagePercentage: 1.2
   numberOfHits: 1
   turnCostMultiplier: 1
   damagePercentagePerLevel: 0.05
-  maxSkillLevel: 11
+  maxSkillLevel: 10
   currencyCostPerLevel: 100
   levelUpResource: {fileID: 0}
   resourceCostPerLevel: 1
   requiresUltimateCharge: 0
   appliedStatusEffects: []
-  selfAppliedStatusEffects:
-  - {fileID: 11400000, guid: 051ceadceffd7ea4aaea679dc13f9a63, type: 2}
+  selfAppliedStatusEffects: []

@@ -113,7 +113,11 @@ namespace NAPI.Combat
             }
 
             CurrentHP = MaxHP;
-            CurrentEnergy = MaxEnergy / 2;
+            CurrentEnergy = MaxEnergy / 3;
+            Debug.Log(
+                $"[ENERGY DEBUG] {Data.displayName} | " +
+                $"MaxEnergy={MaxEnergy} | CurrentEnergy={CurrentEnergy}"
+            );
             UltimateCharge = 0;
             CurrentCharge = 0;
             attackModifier = 0;

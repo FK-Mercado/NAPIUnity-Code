@@ -34,10 +34,13 @@ namespace NAPI.Combat
         /// </summary>
         public CombatEventBus EventBus { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             EventBus = new CombatEventBus();
+        }
 
+        private void Start()
+        {
             turnManager = GetComponent<TurnManager>();
 
             CreatePlayerTeam();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ccc94c8a82c1d40bbd6bc3fdac4b4b, type: 3}
   m_Name: Skill_Markus(OG)_3
   m_EditorClassIdentifier: Assembly-CSharp::NAPI.Data.SkillData
-  id: 
+  id: 3
   skillName: Barrage (gdb --purge [target])
   description: 
   skillType: 2
@@ -31,5 +31,5 @@ MonoBehaviour:
   resourceCostPerLevel: 2
   requiresUltimateCharge: 0
   appliedStatusEffects:
-  - {fileID: 11400000, guid: 96fb99ecfb9ee52408232f4c87d1d259, type: 2}
+  - {fileID: 0}
   selfAppliedStatusEffects: []

@@ -5,13 +5,19 @@ namespace NAPI.Data
     [CreateAssetMenu(fileName = "Skill_", menuName = "NAPI/Skill")]
     public class SkillData : ScriptableObject
     {
+
+        //-- Identidad, visual y descripción de la skill
         [Header("Identidad")]
         [Tooltip("Tiene que ser único: se usa como clave para guardar el nivel de ESTA skill por personaje.")]
         public string id;
         public string skillName;
         [TextArea] public string description;
 
-        [Header("Clasificación (punto 4 del GDD)")]
+        [Header("Visual")]
+        public Sprite icon;
+
+        //-- Clasificación, alcance, costo y daño de la skill
+        [Header("Clasificación")]
         public SkillType skillType;
         public ElementType element;
         public TargetType targetType;
